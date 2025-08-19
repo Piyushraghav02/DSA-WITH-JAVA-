@@ -1,4 +1,4 @@
-public class power {
+public class Power {
 
     public static int Power(int n, int p) {
         if (p == 0) {
