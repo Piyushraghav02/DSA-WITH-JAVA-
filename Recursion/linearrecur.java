@@ -22,9 +22,22 @@ public class linearrecur {
 
     }
 
+    static void Linearreucall(int nums[], int ind, int tar) {
+        if (ind == nums.length - 1) {
+            System.out.println(ind);
+            return;
+        }
+
+        if (nums[ind] == tar) {
+            System.out.println(ind);
+        }
+        Linearreucall(nums, ind + 1, tar);
+    }
+
     public static void main(String[] args) {
 
         int nums[] = { 2, 5, 6, 8, 3, 4 };
+        int nums1[] = { 2, 2, 2 };
 
         // if (linearecur(nums, 0, 8))
         // System.out.println("yes its found");
@@ -32,6 +45,11 @@ public class linearrecur {
         // else
         // System.out.println("its not found");
 
-        System.out.println(linearecurIN(nums, 0, 8));
+        // 2nd method
+        // System.out.println(linearecurIN(nums, 0, 8));
+
+        // 3rd method
+        Linearreucall(nums1, 0, 2);
+
     }
 }
