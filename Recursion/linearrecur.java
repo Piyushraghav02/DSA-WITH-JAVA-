@@ -1,5 +1,4 @@
 
-import com.sun.nio.sctp.PeerAddressChangeNotification;
 import java.util.ArrayList;
 
 public class linearrecur {
@@ -38,22 +37,20 @@ public class linearrecur {
         Linearreucall(nums, ind + 1, tar);
     }
 
+    static Arraylist<Integer> retarr(int nums[], int ind, int tar) {
 
-    static Arraylist<Integer> retarr(int nums[],int ind,int tar){
+        if (ind == nums.length - 1) {
 
-        if(ind==nums.length-1){
-            
         }
 
-        if(nums[ind]==tar){
-            ArrayList<Integer> a1=new ArrayList<>();
+        if (nums[ind] == tar) {
+            ArrayList<Integer> a1 = new ArrayList<>();
             a1.add(ind);
             return a1;
         }
 
-
     }
-   
+
     public static void main(String[] args) {
 
         int nums[] = { 2, 5, 6, 8, 3, 4 };
@@ -70,9 +67,7 @@ public class linearrecur {
         // System.out.println(linearecurIN(nums, 0, 8));
 
         // 3rd method
-        //Linearreucall(nums1, 0, 2);
-
-
+        // Linearreucall(nums1, 0, 2);
 
     }
 }
