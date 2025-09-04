@@ -12,7 +12,8 @@ public class revinsertion {
     static void Insertionrev(int arr[]) {
         int n = arr.length;
         for (int i = 1; i < n; i++) {
-            boolean flag = false;
+            // pick first element and assume that its sorted and place it at correct sorted
+            // array with swapping
             for (int j = i; j > 0; j--) {
                 if (arr[j] < arr[j - 1]) {
                     int temp = arr[j];
