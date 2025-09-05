@@ -26,7 +26,7 @@ class lexicographical {
     }
 
     public static void main(String[] args) {
-        String fruits[] = { " Kiwi", "apple", "papaya", "mango" };
+        String fruits[] = { "kiwi", "apple", "papaya", "mango" };
 
         Sortinlexico(fruits);
     }
