@@ -1,1 +1,1 @@
-arr
+pivot = arr[high];

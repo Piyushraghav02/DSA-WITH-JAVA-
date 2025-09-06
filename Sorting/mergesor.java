@@ -9,32 +9,40 @@ public class mergesor {
 
     static void mergesubarr(int arr[], int low, int mid, int high) {
 
-        int[] temp = new int[high - low + 1];
+        int[] left = new int[mid - low + 1];
+        int[] right = new int[high - mid];
 
-        int i = low;
-        int j = mid + 1;
-        int k = 0;
+        // for the Adding element in left Subarray
+        for (int i = 0; i < mid - low + 1; i++)
+            left[i] = arr[low + i];
 
-        while (i <= mid && j <= high) {
-            if (arr[i] < arr[j]) {
-                temp[k++] = arr[i++];
+        for (int j = 0; j < high - mid; j++)
+            right[j] = arr[mid + 1 + j];
+
+        int i = 0;
+        int j = 0;
+        int k = low;
+
+        while (i <= mid - low + 1 && j <= high - mid) {
+            if (left[i] < right[j]) {
+                arr[k++] = left[i++];
 
             } else {
-                temp[k++] = arr[j++];
+                arr[k++] = right[j++];
             }
         }
 
         // for the first half
         while (i <= mid) {
-            temp[k++] = arr[i++];
+            arr[k++] = left[i++];
         }
 
         // for the Second half
         while (j <= high) {
-            temp[k++] = arr[j++];
+            arr[k++] = right[j++];
         }
 
-        printarr(temp);
+        printarr(arr);
     }
 
     static void Mergesort(int nums[], int low, int high) {
