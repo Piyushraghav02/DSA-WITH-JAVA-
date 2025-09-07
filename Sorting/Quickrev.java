@@ -11,36 +11,37 @@ public class Quickrev {
     static int SortArr(int arr[], int low, int high) {
 
         int pivot = arr[low];
-        low = low + 1;
+        int i = low + 1;
+        int j = high;
 
-        while (low <= high) {
+        while (i <= j) {
 
-            if (low <= high && arr[low] <= pivot)
-                low++;
+            if (i <= high && arr[i] <= pivot)
+                i++;
 
-            if (high > low && arr[high] >= pivot)
-                high--;
+            if (j > low && arr[j] >= pivot)
+                j--;
 
-            if (low < high) {
-                int temp = arr[low];
-                arr[low] = arr[high];
-                arr[high] = temp;
+            if (i < j) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
             }
 
         }
-        int temp = arr[pivot];
-        arr[pivot] = arr[high];
-        arr[high] = temp;
+        int temp = arr[low];
+        arr[low] = arr[j];
+        arr[j] = temp;
 
-        return high;
+        return j;
     }
 
-    static void Quicksort(int arr[], int low, int high) {
+    static void Quicksort(int arr[], int i, int j) {
 
-        if (low < high) {
-            int pivot = SortArr(arr, low, high);
-            Quicksort(arr, low, pivot - 1);
-            Quicksort(arr, pivot + 1, high);
+        if (i < j) {
+            int pivot = SortArr(arr, i, j);
+            Quicksort(arr, i, pivot - 1);
+            Quicksort(arr, pivot + 1, j);
         }
 
     }
