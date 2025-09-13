@@ -24,7 +24,6 @@ public class count {
         int k = 0;
 
         for (int i = 0; i < freqarr.length - 1; i++) {
-
             freqarr[arr[i]]++;
         }
 
@@ -34,7 +33,7 @@ public class count {
             }
         }
 
-        printarr(freqarr);
+        printarr(arr);
     }
 
     public static void main(String[] args) {
