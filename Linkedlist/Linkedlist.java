@@ -15,7 +15,7 @@ public class Linkedlist {
     public void Addfirst(int data) {
         Node head = new Node(data); // This is ADD First Method
 
-        if (head == null) {
+        if (Start == null) {
             Start = End = head;
             return;
         } else {
@@ -25,10 +25,26 @@ public class Linkedlist {
         }
     }
 
+    public void AddMiddle(int data, int ind) {
+        Node head = new Node(data);
+
+        if (Start == null) {
+            Start = End = head;
+        } else {
+            Node temp = Start;
+
+            for (int i = 0; i < ind - 1; i++) {
+                temp = temp.next;
+            }
+            head.next = temp.next;
+            temp.next = head;
+        }
+    }
+
     public void Addlast(int data) {
         Node head = new Node(data); // This is Insert LAST Method
 
-        if (head == null) {
+        if (Start == null) {
             Start = End = head;
             return;
         } else {
@@ -57,7 +73,8 @@ public class Linkedlist {
 
         LL.Addfirst(10);
         LL.Addfirst(5);
-LL.Addlast(20);
+        LL.Addlast(20);
+        LL.AddMiddle(8, 1);
         LL.Display(Start);
     }
 }
