@@ -113,6 +113,17 @@ public class Linkedlist {
 
     }
 
+    public int Searchind(Node Start, int key, int ind) {
+        if (Start == null) {
+            return -1;
+        }
+
+        if (Start.data == key) {
+            return ind;
+        }
+        return Searchind(Start.next, key, ind + 1);
+    }
+
     public static void main(String[] args) {
 
         Linkedlist LL = new Linkedlist();
@@ -123,7 +134,7 @@ public class Linkedlist {
         LL.AddMiddle(8, 1);
         LL.Display(Start);
         System.out.println();
-        System.out.println("Size of Linkedlist :- " + LL.size);
+        // System.out.println("Size of Linkedlist :- " + LL.size);
         // System.out.println("Deleted node from first is :- " + LL.Deletionfirst());
         // System.out.println("Size of Linkedlist :- " + LL.size);
         // LL.Display(Start);
@@ -136,9 +147,11 @@ public class Linkedlist {
         // System.out.println("Size of Linkedlist :- " + LL.size);
 
         // for last index check
-        System.out.println("Deletion from last :-" + LL.Deletionlast());
-        System.out.println("Size of Linkedlist :- " + LL.size);
-        LL.Display(Start);
+        // System.out.println("Deletion from last :-" + LL.Deletionlast());
+        // System.out.println("Size of Linkedlist :- " + LL.size);
+        // LL.Display(Start);
+
+        System.out.println(" Index of Linkedlist :- " + LL.Searchind(Start, 20, 0));
 
     }
 }
