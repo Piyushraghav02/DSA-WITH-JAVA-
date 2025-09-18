@@ -124,6 +124,21 @@ public class Linkedlist {
         return Searchind(Start.next, key, ind + 1);
     }
 
+    public void ReverseLL() {
+        Node prev = null;
+        Node curr = End = Start;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Start = prev;
+
+    }
+
     public static void main(String[] args) {
 
         Linkedlist LL = new Linkedlist();
@@ -151,7 +166,10 @@ public class Linkedlist {
         // System.out.println("Size of Linkedlist :- " + LL.size);
         // LL.Display(Start);
 
-        System.out.println(" Index of Linkedlist :- " + LL.Searchind(Start, 20, 0));
+        // System.out.println(" Index of Linkedlist :- " + LL.Searchind(Start, 20, 0));
 
+        // Reverse linked list
+        LL.ReverseLL();
+        LL.Display(Start);
     }
 }
