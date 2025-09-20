@@ -81,18 +81,26 @@ public class Linkedlist {
 
     public int Deletionmiddle(int ind) {
 
+        int deldata = -1;
         if (Start == null) {
             System.out.println("Linkedlist is empty");
         }
         Node temp = Start;
-
-        for (int i = 0; i < ind - 1; i++) {
-            temp = temp.next;
+        if (ind > 0 && ind < size - 1) {
+            for (int i = 0; i < ind - 1; i++) {
+                temp = temp.next;
+            }
+            deldata = temp.next.data;
+            temp.next = temp.next.next;
+            size--;
         }
-        int val = temp.next.data;
-        temp.next = temp.next.next;
-        size--;
-        return val;
+        if (ind == 0) {
+            Deletionfirst();
+        }
+        if (ind == size) {
+            Deletionlast();
+        }
+        return deldata;
     }
 
     public int Deletionlast() {
@@ -155,10 +163,10 @@ public class Linkedlist {
         // LL.Display(Start);
 
         // for index
-        // int ind = 1;
-        // System.out.println("Deleted node from " + ind + "index :- " +
-        // LL.Deletionmiddle(ind));
-        // LL.Display(Start);
+        int ind = 4;
+        System.out.println("Deleted node from " + ind + "index :- " +
+                LL.Deletionmiddle(ind));
+        LL.Display(Start);
         // System.out.println("Size of Linkedlist :- " + LL.size);
 
         // for last index check
@@ -169,7 +177,7 @@ public class Linkedlist {
         // System.out.println(" Index of Linkedlist :- " + LL.Searchind(Start, 20, 0));
 
         // Reverse linked list
-        LL.ReverseLL();
-        LL.Display(Start);
+        // LL.ReverseLL();
+        // LL.Display(Start);
     }
 }
