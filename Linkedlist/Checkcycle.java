@@ -1,7 +1,10 @@
 
-public class Palindrome {
+import java.util.LinkedList;
+import java.util.Scanner;
 
-    public class Node {
+public class Checkcycle {
+
+    public static class Node {
         int data;
         Node next;
 
@@ -121,113 +124,65 @@ public class Palindrome {
 
     }
 
-    public int Searchind(Node Start, int key, int ind) {
-        if (Start == null) {
-            return -1;
-        }
+    public static boolean checkcycle(Node Start) {
+        Node slow = Start;
+        Node fast = Start;
 
-        if (Start.data == key) {
-            return ind;
-        }
-        return Searchind(Start.next, key, ind + 1);
-    }
-
-    public void ReverseLL() {
-        Node prev = null;
-        Node curr = End = Start;
-        Node next;
-
-        while (curr != null) {
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-        }
-        Start = prev;
-
-    }
-
-    public Node Findmid(Node Start) {
-
-        Node Slow = Start;
-        Node Fast = Start;
-
-        while (Fast != null && Fast.next != null) {
-            Slow = Slow.next;
-            Fast = Fast.next.next;
-        }
-        return Slow;
-    }
-
-    public boolean CheckPali(Node Start) {
-
-        if (Start == null || Start.next == null) {
-            return true;
-        }
-
-        Node midnode = Findmid(Start);
-        Node prev = null;
-        Node curr = midnode;
-        Node next;
-
-        while (curr != null) {
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-        }
-        Node Right = curr;
-        Node Left = Start;
-        while (Right != null) {
-
-            while (Right.data != Left.data) {
-                return false;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
             }
-            Right = Right.next;
-            Left = Left.next;
+        }
+        return false;
+    }
+
+    public static void Removecycle(Node Start) {
+
+        // Detect the cycle
+        Node slow = Start;
+        Node fast = Start;
+        Boolean cycle = false;
+
+        while (fast != null && fast.next != null) {
+            if (fast == slow) {
+                cycle = true;
+            }
+        }
+
+        // detect
+        if (cycle == false) {
+            return;
+        } else {
+            // Remove the cycle
+            slow = Start;
+            Node prev = null;
+
+            while (slow == fast) {
+                slow = slow.next;
+                prev = fast;
+                fast = fast.next;
+            }
+            prev.next = null;
+            System.out.println("Cycle is removed from LL");
 
         }
-        return true;
     }
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        Palindrome LL = new Palindrome();
-
-        // LL.Addfirst(10);
-        // LL.Addfirst(5);
-        // LL.Addlast(1);
-        // LL.AddMiddle(8, 1);
-        // LL.Display(Start);
-        // System.out.println();
-        // System.out.println("Size of Linkedlist :- " + LL.size);
-        // System.out.println("Deleted node from first is :- " + LL.Deletionfirst());
-        // System.out.println("Size of Linkedlist :- " + LL.size);
-        // LL.Display(Start);
-
-        // for index
-        // int ind = 4;
-        // System.out.println("Deleted node from " + ind + "index :- " +
-        // LL.Deletionmiddle(ind));
-        // LL.Display(Start);
-        // System.out.println("Size of Linkedlist :- " + LL.size);
-
-        // for last index check
-        // System.out.println("Deletion from last :-" + LL.Deletionlast());
-        // System.out.println("Size of Linkedlist :- " + LL.size);
-        // LL.Display(Start);
-
-        // System.out.println(" Index of Linkedlist :- " + LL.Searchind(Start, 20, 0));
-
-        // Reverse linked list
-        // LL.ReverseLL();
-        // LL.Display(Start);
-
+        Checkcycle LL = new Checkcycle();
         LL.Addlast(1);
         LL.Addlast(2);
-        LL.Addlast(2);
-        LL.Addlast(1);
-        System.out.println("This is LL is palindrome :-" + LL.CheckPali(Start));
+        LL.Addlast(3);
+        LL.Addlast(4);
+        
+
+        System.out.println("This Linked list is cylic:- " + checkcycle(Start));
+
+        Removecycle(Start);
 
     }
 }
