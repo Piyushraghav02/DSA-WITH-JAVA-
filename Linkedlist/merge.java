@@ -1,7 +1,5 @@
 
-import java.util.Scanner;
-
-public class Checkcycle {
+public class merge {
 
     public static class Node {
         int data;
@@ -123,61 +121,73 @@ public class Checkcycle {
 
     }
 
-    public static boolean checkcycle(Node Start) {
+    public Node getmid(Node Start) {
         Node slow = Start;
         Node fast = Start;
 
-        while (fast != null && fast.next != null) {
+        while (fast != null && fast != null) {
             slow = slow.next;
             fast = fast.next.next;
-            if (slow == fast) {
-                return true;
-            }
         }
-        return false;
+        return slow;
     }
 
-    public static void Removecycle(Node Start) {
+    public Node mergeNode(Node RightStart, Node LeftStart) {
+        Node Node1 = new Node(-1);
+        Node temp = Node1;
 
-        // Detect the cycle
-        Node slow = Start;
-        Node fast = Start;
-        Boolean cycle = false;
+        while (RightStart != null && LeftStart != null) {
+            if (LeftStart.data <= RightStart.data) {
+                temp.next = LeftStart;
+                LeftStart = LeftStart.next;
+                temp = temp.next;
+            } else {
+                temp.next = RightStart;
+                RightStart = RightStart.next;
+                temp = temp.next;
 
-        while (fast != null && fast.next != null) {
-            if (fast == slow) {
-                cycle = true;
             }
         }
-
-        // detect
-        if (cycle == false) {
-            return;
-        } else {
-            // Remove the cycle
-            slow = Start;
-            Node prev = null;
-
-            while (slow == fast) {
-                slow = slow.next;
-                prev = fast;
-                fast = fast.next;
-            }
-            prev.next = null;
-            System.out.println("Cycle is removed from LL");
-
+        while (LeftStart != null) {
+            temp.next = LeftStart;
+            LeftStart = LeftStart.next;
+            temp = temp.next;
         }
+        while (RightStart != null) {
+            temp.next = RightStart;
+            RightStart = RightStart.next;
+            temp = temp.next;
+        }
+        return Node1.next;
+    }
+
+    public Node Mergesort(Node Start) {
+        if (Start == null && Start.next == null) {
+            return Start;
+        }
+
+        Node midnode = getmid(Start);
+        Node Rightnode = midnode.next;
+        midnode.next = null;
+        Node LeftStart = Mergesort(Start);
+        Node RightStart = Mergesort(Rightnode);
+
+        return mergeNode(RightStart, LeftStart);
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        merge LL = new merge();
+        LL.Addfirst(1);
+        LL.Addfirst(2);
+        LL.Addfirst(2);
+        LL.Addfirst(4);
+        LL.Addfirst(5);
+        LL.Addfirst(6);
+        LL.Addfirst(7);
+        LL.Addfirst(8);
 
-        Start = new Node(1);
-        
-
-        System.out.println("This Linked list is cylic:- " + checkcycle(Start));
-
-        Removecycle(Start);
-
+        LL.Display(Start);
+        Node Start = LL.Mergesort(LL.Start);
+        LL.Display(Start);
     }
 }
