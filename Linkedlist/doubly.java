@@ -10,7 +10,7 @@ class doubly{
         }
     }
     
-    public static Node Start,End;
+    public static Node Start=null,End=null;
     public int size;
 
     public void Addfirst(int data){
@@ -20,13 +20,17 @@ class doubly{
         Node head=new Node(data);
 
         if(Start==null){
+            head.next=head.prev=null;
             Start=End=head;
+            
             return;
         }
 
         head.next=Start;
         Start.prev=head;
         Start=head;
+        Start.prev=null;
+
     }
 
     public void AddLast(int data){
@@ -37,6 +41,7 @@ class doubly{
 
         if(Start==null){
             Start=End=head;
+
             return;
         }
 
@@ -62,24 +67,120 @@ class doubly{
             return;
         }
 
+        Node temp=Start;
 
+        if(index==1){
+
+        head.next=Start;
+        Start.prev=head;
+        Start=head;
+        Start.prev=null;
+        
+        }
+        
+        if(index>1){
+            for(int i=1;i<index-1;i++){
+            temp=temp.next;
+        }
+            Node temp2=temp.next;
+            temp.next=head;
+            head.prev=temp;
+            head.next=temp2;
+            temp2.prev=head;
+        }
     }
     
     public void Display(Node Start){
 
         if(Start==null){
-            System.out.print("Doubly linked list is empty");
+            System.out.print("--Doubly linked list is empty--");
         }
         
-        System.out.print("Display the nodes :- ");
+        else{System.out.print("Display the nodes :- ");
         Node temp=Start;
         while(temp!=null){
             System.out.print(+temp.data+"->");
             temp=temp.next;
         }
     }
+    }
+
+    public int Deletefirst(){
+
+    
+        if(Start==null){
+            System.out.println("Doubly linked list is empty");
+        }
+
+        if(size==1){
+            int data=Start.data;
+            Start=End=null;
+            size--;
+            return data;
+        }
+        else{
+
+            int data=Start.data;
+            Start=Start.next;
+            Start.prev=null;
+            size--;
+            return data;
+        }
 
 
+    }
+
+    public int DeleteLast(){
+
+        if(Start==null){
+            System.out.println("Doubly linked list is empty");
+        }
+
+        if(size==1){
+            int data=End.data;
+            Start=End=null;
+            size--;
+            return data;
+        }
+        else{
+            int data=End.data;
+            End=End.prev;
+            size--;
+            return data;
+
+        }
+
+
+    }
+    
+    public int Deletemid(int ind) {
+        int val = -1;
+
+        if (Start == null) {
+            System.out.println("Doubly linked list is empty");
+        }
+
+        if (size == 1) {
+            int data = End.data;
+            Start = End = null;
+            size--;
+            return data;
+        }
+
+        if (size > 1) {
+
+            Node temp = Start;
+            for (int i = 1; i < ind - 1; i++) {
+                temp = temp.next;
+            }
+            val = temp.data;
+            temp.next = temp.next.next;
+            temp.next.prev = temp;
+            size--;
+        }
+        return val;
+    }
+    
     public void ReverseDisplay(Node End){
 
         if(Start==null){
@@ -99,13 +200,31 @@ class doubly{
 
         DL.AddLast(1);
         DL.AddLast(2);
-        DL.AddLast(3);
-        DL.AddLast(4);
-        DL.Display(Start);
+         DL.AddLast(3);
+        // DL.AddLast(5);
+        // DL.Display(Start);
         System.out.println();
-        System.out.println("Size of the Doubly linked list :-"+DL.size);
- 
-        DL.ReverseDisplay(End);
-        System.out.println();
+        
+        // DL.ReverseDisplay(End);
+        // System.out.println();
+        
+        //Add in middle
+        // System.out.println("Size of the Doubly linked list :-"+DL.size);
+        // DL.Addmiddle(6, 4);
+        // DL.Display(Start);
+    
+    //Deleted from first
+    //System.out.println("Deleted data in node :-"+DL.Deletefirst());
+    //DL.Display(Start);
+   
+    //Deletd from last
+    // System.out.println("Deleted data in last node :-"+DL.DeleteLast());  
+    // DL.Display(Start);    
+
+    //Delete from middle
+    System.out.println("Deleted data from middle :-"+DL.Deletemid(2));  
+    DL.Display(Start);    
+    
+
     }
 }
