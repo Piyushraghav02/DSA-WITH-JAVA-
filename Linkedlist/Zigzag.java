@@ -171,16 +171,49 @@ public class Zigzag{
     }
 
     public static void Zigzag(Node Start){
+ 
+        //Calculate the midnode
         Node slow =Start;
         Node fast =Start.next;
+ 
         while(fast!=null && fast.next!=null){
             slow=slow.next;
             fast=fast.next.next;
         }
-        Node curr =slow;
+        Node midnode =slow;
+        
+        //prev is called midnode
+        
+        Node curr=midnode.next;
+        Node prev=midnode;
+        midnode.next=null;
+
+        while(curr!=null){
+            Node next=curr.next;
+        
+            //reverse link
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
         
 
+        //now we do LeftStart & RightStart
+        Node LeftStart=Start;
+        Node RightStart=curr;
+        Node Ltemp,Rtemp;
 
+        while(LeftStart!=null && RightStart!=null){
+        Ltemp=LeftStart.next;
+        LeftStart.next=RightStart;
+        Rtemp=RightStart.next;
+        RightStart.next=Ltemp;
+        
+        LeftStart=Ltemp;
+        RightStart=Rtemp;
+        }
+
+        
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -190,11 +223,13 @@ public class Zigzag{
         LL.Addlast(2);
         LL.Addlast(3);
         LL.Addlast(4);
+        LL.Addlast(5);
+        LL.Display(Start);
         
-
-        System.out.println("This Linked list is cylic:- " + checkcycle(Start));
-
-        Removecycle(Start);
-
+        System.out.println();
+       
+        LL.Zigzag(Start);
+        LL.Display(Start);
+       
     }
 }
