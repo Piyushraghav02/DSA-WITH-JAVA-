@@ -147,16 +147,35 @@ public class Linkedlist {
 
     }
 
+    public Node Findinternode(Node start1, Node Start2,int n,int m) {
+        Node temp = Start;
+        Node temp2 = Start2;
+
+        for (int i = 1; i < n - m; i++) {
+            temp = temp.next;
+        }
+
+        while (temp == temp2) {
+            temp = temp.next;
+            temp2 = temp2.next;
+        }
+        return temp;
+    }
     public static void main(String[] args) {
 
         Linkedlist LL = new Linkedlist();
 
+        
+        
+        /* 
         LL.Addfirst(10);
         LL.Addfirst(5);
         LL.Addlast(20);
         LL.AddMiddle(8, 1);
         LL.Display(Start);
         System.out.println();
+        */
+
         // System.out.println("Size of Linkedlist :- " + LL.size);
         // System.out.println("Deleted node from first is :- " + LL.Deletionfirst());
         // System.out.println("Size of Linkedlist :- " + LL.size);
