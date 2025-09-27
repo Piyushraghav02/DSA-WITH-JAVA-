@@ -181,6 +181,39 @@ class doubly{
         return val;
     }
     
+    public int Deletenth(int ind) {//Delete from end nth
+
+        //1st approach
+       /*  Node temp = Start;
+        for (int i = 1; i < size - ind; i++) {
+            temp = temp.next;
+        }
+        int val = temp.next.data;
+        temp.next = temp.next.next;
+        return val;
+    */
+
+        //2nd approach
+
+        Node slow = Start;
+        Node fast = Start;
+
+        for (int i = 1; i <=ind; i++) {
+            fast = fast.next;
+        }
+
+        while (fast.next != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        int val = slow.next.data;
+        slow.next = slow.next.next;
+        slow.next.prev = slow;
+        return val;
+        
+
+}
+
     public void ReverseDisplay(Node End){
 
         if(Start==null){
@@ -201,8 +234,8 @@ class doubly{
         DL.AddLast(1);
         DL.AddLast(2);
          DL.AddLast(3);
-        // DL.AddLast(5);
-        // DL.Display(Start);
+         DL.AddLast(4);
+         DL.Display(Start);
         System.out.println();
         
         // DL.ReverseDisplay(End);
@@ -222,9 +255,12 @@ class doubly{
     // DL.Display(Start);    
 
     //Delete from middle
-    System.out.println("Deleted data from middle :-"+DL.Deletemid(2));  
-    DL.Display(Start);    
+    // System.out.println("Deleted data from middle :-"+DL.Deletemid(2));  
+    // DL.Display(Start);    
     
 
+    //Delete from end nth
+   System.out.println( "Deleted node :-"+DL.Deletenth(2));
+    DL.Display(Start);
     }
 }
