@@ -13,10 +13,10 @@ public class parenthesis {
 
             char ch = st.charAt(i);
 
-            if (ch == '(') {
+            if (ch == '(' || ch == '{' || ch=='[') {
                 s.push(ch);
             } else {
-                if (s.peek() == '(') {
+                if (s.peek() == '(' || s.peek()=='{'||s.peek()=='[') {
                     s.pop();
                 }
                 else if(s.size() == 0)
