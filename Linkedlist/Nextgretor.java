@@ -40,13 +40,11 @@ public class Nextgretor {
 
         for (int i = n - 2; i >= 0; i--) {
             
-            while (arr[i] > s.peek() && s.size() >0 ) {
+            while (s.peek() < arr[i] || s.size() > 0) {
                 s.pop();
             }
-            
             if (s.size() == 0) {
                 res[i] = -1;
-               
             }
             else{
                 res[i] = s.peek();
