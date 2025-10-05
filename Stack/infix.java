@@ -11,31 +11,43 @@ public class infix {
         Stack<Character> op = new Stack();
     
         for (int i = 0; i < str.length(); i++) {
-            
+
             char ch = str.charAt(i);
 
             int ascii = (int) ch;
 
             if (ascii >= 48 && ascii <= 57) {
-                num.push(ascii-48);
-            }
-            else if (op.size() == 0)
+                num.push(ascii - 48);
+            } else if (op.size() == 0)
                 op.push(ch);
             else {
-                if (op.peek() == '-' || op.peek() == '+') {
+                if (ch == '+' || ch == '-') {
+
                     int val2 = num.pop();
                     int val1 = num.pop();
-                    int operator = (int) op.peek();
+                    int operator = (int) op.pop();
 
-                    num.push(val2 - val1);
-                }
-                else {
-                    
+                    if (operator == '+')
+                        num.push(val1 + val2);
+
+                    if (operator == '-')
+                        num.push(val1 - val2);
+
+                } else {
+                    int val2 = num.pop();
+                    int val1 = num.pop();
+                    int operator = (int) op.pop();
+
+                    if (operator == '*')
+                        num.push(val1 * val2);
+
+                    if (operator == '/')
+                        num.push(val1 / val2);
+
                 }
             }
-
         }
-        
+                
     }
         
     public static void main(String[] args) {
