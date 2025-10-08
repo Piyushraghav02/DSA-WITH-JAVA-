@@ -1,3 +1,2 @@
-    if(s.size() == 0)
-                    return false;
-            
+tring val2 = num.pop();
+                            S
