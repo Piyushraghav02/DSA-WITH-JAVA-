@@ -64,7 +64,8 @@ public class infixtoprefix {
                             //push the character
                             op.push(ch);
 
-                        } else
+                        } 
+                        else
                             op.push(ch);
                     }
                     
