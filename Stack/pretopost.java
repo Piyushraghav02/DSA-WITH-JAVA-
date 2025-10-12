@@ -17,7 +17,8 @@ public class pretopost {
             if (ascii >= 48 && ascii <= 57) {//0to 9
                 String s = "" + ch;
                 st.push(s);
-            } else {
+            } 
+            else {
                 String val1 = st.pop();
                 String val2 = st.pop();
 
