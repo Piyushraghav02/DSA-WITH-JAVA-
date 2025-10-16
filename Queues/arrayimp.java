@@ -127,6 +127,60 @@ public class arrayimp {
     }
     
     }
+
+    public static class CirQueueimp {
+        int arr[] = new int[5];
+        int n = arr.length;
+        int front = -1, rear = -1;
+        int size = 0;
+
+        public void Enqueue(int data) {
+
+            if (size == n) {
+                System.out.println("Circular queue is Overflow");
+                return;
+            }
+            if (size == 0) {
+                 front = rear = 0;
+                 arr[rear++] = data;
+                 size++;
+             }
+            // else if (rear == n - 1) {
+            //     arr[rear] = data;
+            //     size++;
+            //     rear = (rear + 1) % n;
+            // } else {
+            //     arr[rear++] = data;
+            //     size++;
+            // }
+            rear = (rear + 1) % n;
+            arr[rear] = data;
+            size++;
+
+        }
+
+        public void Display() {
+            
+            if (size == 0) {
+                System.out.println("Circular queue is empty ");
+                return;
+            }
+            else if (front <= rear) {
+                for (int i = front; i <= rear; i++) {
+                    System.out.println(arr[i]);
+                }
+            }
+            else {
+                for (int i = front; i < n; i++) {
+                    System.out.println(arr[i]);
+                }
+                for (int j = 0; j <= rear; j++) {
+                    System.out.println(arr[j]);
+                }
+            }
+        }
+
+    }
     public static void main(String[] args) {
 
         Arrqueue q1 = new Arrqueue();
@@ -138,13 +192,24 @@ public class arrayimp {
         // q1.Display();
 
 
-        arrayimp.QueueLLimp QL = new QueueLLimp();
-        QL.Enqueue(1);
-        QL.Enqueue(2);
-        QL.Enqueue(3);
-        QL.Enqueue(4);
-        QL.Enqueue(5);
+        // arrayimp.QueueLLimp QL = new QueueLLimp();
+        // QL.Enqueue(1);
+        // QL.Enqueue(2);
+        // QL.Enqueue(3);``                 //Linked list implementation
+        // QL.Enqueue(4);
+        // QL.Enqueue(5);
         
-        QL.Display();
+        // QL.Display();
+
+
+
+        arrayimp.CirQueueimp CQ = new CirQueueimp();
+        CQ.Enqueue(1);
+        CQ.Enqueue(2);
+        CQ.Enqueue(3);
+        CQ.Enqueue(4);
+        CQ.Enqueue(5);
+        CQ.Display();
+
     }
 }
