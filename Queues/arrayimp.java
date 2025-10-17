@@ -181,6 +181,70 @@ public class arrayimp {
         }
 
     }
+
+    public static class CicularQueueLLimp{
+        
+        Node Front, Rear;;
+        int size;
+        public void Enqueue(int data) {
+
+            Node head = new Node(data);
+
+            if (Front == null && Rear == null) {
+                Front = Rear  = head;
+                size++;
+            } else {
+                Rear.next = head;
+                Rear = head;
+                Rear.next = Front;
+                size++;
+            }
+
+        }
+            
+        public int Dequeue() {
+            if (size == 0) {
+                System.out.println("Queue is empty");
+                return -1;
+            }
+
+            int data = Front.data;
+            Front = Front.next;
+            Rear.next = Front;
+            size--;
+            return data;
+        }
+    
+        public int Peek() {
+
+            if (size == 0) {
+                System.out.print("Queue is empty");
+            }
+            int data = Front.data;
+            return data;
+        }
+    
+        public void Display() {
+
+            if (size == 0) {
+                System.out.println(" Queue is empty");
+                return;
+
+            }else{
+                Node temp = Front;
+                while (temp !=Rear) {
+                    System.out.println(temp.data);
+                    temp = temp.next;
+                 }
+                 System.out.println(temp.data);
+                
+            }
+    }
+    
+    }
+
+
+
     public static void main(String[] args) {
 
         Arrqueue q1 = new Arrqueue();
@@ -203,13 +267,25 @@ public class arrayimp {
 
 
 
-        arrayimp.CirQueueimp CQ = new CirQueueimp();
-        CQ.Enqueue(1);
-        CQ.Enqueue(2);
-        CQ.Enqueue(3);
-        CQ.Enqueue(4);
-        CQ.Enqueue(5);
-        CQ.Display();
+        // arrayimp.CirQueueimp CQ = new CirQueueimp();
+        // CQ.Enqueue(1);
+        // CQ.Enqueue(2);
+        // CQ.Enqueue(3);                           Circular queue imp with arr
+        // CQ.Enqueue(4);
+        // CQ.Enqueue(5);
+        // CQ.Display();
+
+
+        arrayimp.CicularQueueLLimp CQL = new CicularQueueLLimp();
+        CQL.Enqueue(1);
+        CQL.Enqueue(2);
+        CQL.Enqueue(3);
+        CQL.Enqueue(4);
+        CQL.Enqueue(5);
+        
+        CQL.Display();
+
+
 
     }
 }
