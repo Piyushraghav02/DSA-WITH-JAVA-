@@ -276,14 +276,14 @@ public class arrayimp {
         // CQ.Display();
 
 
-        arrayimp.CicularQueueLLimp CQL = new CicularQueueLLimp();
-        CQL.Enqueue(1);
-        CQL.Enqueue(2);
-        CQL.Enqueue(3);
-        CQL.Enqueue(4);
-        CQL.Enqueue(5);
+        // arrayimp.CicularQueueLLimp CQL = new CicularQueueLLimp();
+        // CQL.Enqueue(1);
+        // CQL.Enqueue(2);
+        // CQL.Enqueue(3);
+        // CQL.Enqueue(4);
+        // CQL.Enqueue(5);
         
-        CQL.Display();
+        // CQL.Display();
 
 
 
