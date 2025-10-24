@@ -17,6 +17,7 @@ public class slidingwindow {
 
             if (arr[i] < 0) //adding -ve element
                 q1.add(i);
+                
         }
         
         for (int i = 0; i < n - k + 1; i++) {
