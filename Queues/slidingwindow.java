@@ -22,7 +22,7 @@ public class slidingwindow {
         
         for (int i = 0; i < n - k + 1; i++) {
             for (int j = i; j < j + k - 1; j++) {
-                if(q1.peek())
+
 
             }
         }
