@@ -20,6 +20,7 @@ public class Hashmapimp {
             }
         }
 
+
         private int n;
 
         private LinkedList<Node>[] Buckets;
