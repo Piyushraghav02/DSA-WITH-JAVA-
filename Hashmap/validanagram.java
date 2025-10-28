@@ -23,18 +23,35 @@ public class validanagram {
     
     public boolean isanagram(String S, String T) {
 
-        HashMap<Character, Integer> mp1 = Makefreqmap(T);
+        HashMap<Character, Integer> mp1 = Makefreqmap(S);
 
-        HashMap<Character, Integer> mp2 = Makefreqmap(S);
+        // HashMap<Character, Integer> mp2 = Makefreqmap(S);
 
-        return mp1.equals(mp2);
+        // return mp1.equals(mp2);
+
+        for (int i = 0; i < T.length(); i++) {
+
+            if (mp1.containsKey(T.charAt(i))) {
+                mp1.put(T.charAt(i), mp1.get(T.charAt(i)) - 1);
+            }
+            else
+                return false;
+        }
+        
+    
+        for (Integer i : mp1.values()) {
+            if (i != 0)
+                return false;
+        }
+        return true;
+
     }
 
     public static void main(String[] args) {
     validanagram hm=new validanagram();
         
         String s1 = "Knee";
-        String s2 = "Keenn";
+        String s2 = "Keen";
 
         System.out.println("Is both String is Anagram :- "+hm.isanagram(s1, s2));
         
