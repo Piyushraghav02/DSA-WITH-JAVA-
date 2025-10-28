@@ -100,8 +100,9 @@ class hashmapimp{
             return buckets.length;
         }
 
-        public int Findloadfactor() {
-            return buckets.length;
+        public float Findloadfactor() {
+            
+            return (n * 1.0f) % buckets.length;
         }
         
         public v get(k key) {
@@ -156,7 +157,7 @@ class hashmapimp{
     
     System.out.println("After :- "+Mhm.capacity());
 
-    //System.out.println("Remove key value :- "+Mhm.Remove("A"));
+    System.out.println("Remove key value :- "+Mhm.Findloadfactor());
     
     }
 }
