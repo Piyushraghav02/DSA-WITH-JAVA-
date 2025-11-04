@@ -50,11 +50,7 @@ public class reverse {
         System.out.println();
     }
     
-    public Node addTwoNumbers(Node l1, Node l2) {
-        
-        
-    }
-
+    
     public static void main(String[] args) {
     
     /*     Node a = new Node(1);
