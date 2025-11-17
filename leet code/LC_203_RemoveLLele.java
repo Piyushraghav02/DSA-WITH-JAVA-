@@ -55,7 +55,20 @@ public class LC_203_RemoveLLele {
 
         }
     }
-        
+  
+    public static ListNode reverseList(ListNode head) {
+       
+        ListNode curr=head;
+        ListNode rear=head;
+        ListNode prev=null;
+
+        while(curr!=null){
+            curr.next = prev;
+            rear.next=curr;
+            prev=curr;
+        }
+ return prev;       
+    }
 
         public static void main(String[] args) {
 
@@ -68,8 +81,9 @@ public class LC_203_RemoveLLele {
             l2.next = l3;
             l3.next = l4;
 
-            ListNode temp =LC_203_RemoveLLele.removeElements(l1, 1);
-            
+           // ListNode temp =LC_203_RemoveLLele.removeElements(l1, 1);
+            ListNode temp =reverseList(l1);
+           
             Display(temp);
         }
     }
