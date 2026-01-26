@@ -7,7 +7,7 @@ public class LC167TwosumII {
 
         int arr[] = new int[2];
         
-        while (low <high) {
+        while (low < high) {
 
             int currtarget = numbers[low] + numbers[high];
 
