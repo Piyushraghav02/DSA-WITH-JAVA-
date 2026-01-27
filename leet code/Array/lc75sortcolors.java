@@ -7,7 +7,7 @@ public class lc75sortcolors {
 
         for (int i = 0; i < n; i++) {
             int min = i;
-            for (int j = i + 1; j < n; j++) {
+            for (int j = i + 1; j <=n; j++) {
                 if (nums[j] < nums[min])
                     min = j;
             }
