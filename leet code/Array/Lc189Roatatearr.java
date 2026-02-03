@@ -27,9 +27,8 @@ public class Lc189Roatatearr {
         
         int n=nums.length;
       
-        if (n == 1)
-            return nums[0];
         
+
        reversearr(nums,0,n-1);
        reversearr(nums, 0, k - 1);
        reversearr(nums,k,n-1);
