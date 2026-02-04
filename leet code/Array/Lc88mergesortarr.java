@@ -29,16 +29,28 @@ public class Lc88mergesortarr {
         //     nums1[i++] = elem;
         // }
         
-        int low = n+m-1, high = n-1, mid =m-1;
-        
-        while (low >= 0 && high >= 0) {
-            
-            if (nums1[mid] < nums2[high]) {
-                nums1[low] = nums2[high];
-                high--;
-                low--;
+        int i = m - 1;        // last valid element in nums1
+        int j = n - 1;        // last element in nums2
+        int k = m + n - 1;    // last index of nums1
+
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] > nums2[j]) {
+                nums1[k] = nums1[i];
+                i--;
+            } else {
+                nums1[k] = nums2[j];
+                j--;
             }
+            k--;
         }
+
+        // copy remaining elements of nums2 (if any)
+        while (j >= 0) {
+            nums1[k] = nums2[j];
+            j--;
+            k--;
+        }
+
 
     }
     public static void main(String[] args) {
