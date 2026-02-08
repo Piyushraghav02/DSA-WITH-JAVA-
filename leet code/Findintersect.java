@@ -9,6 +9,7 @@ public class Findintersect {
             this.data = data;
         }
     }
+    
 
     public static Node Start, End;// initalize the Pointer which is type of Node (hold the add of nodes)
     public static int size;
