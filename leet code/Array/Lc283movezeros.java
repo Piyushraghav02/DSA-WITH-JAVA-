@@ -6,22 +6,13 @@ public class Lc283movezeros {
 
         int i = -1;
 
-        // for (int i = 0; i <=n; i++) {
-
-        //     if (nums[i] != 0) {
-        //         nums[j++] = nums[i];
-                                                //O(n) time complexity
-        //     }
-        // }
-        // for (int k = j; k <=n; k++) {
-        //     nums[k] = 0;
-
-        // }
-        // }
+        
 
 
 
-
+        if (nums.length <= 1)
+            return;
+        
         for (int k = 0; k < n; k++){
             if (nums[k] == 0) {
                 i = k;
@@ -38,6 +29,7 @@ public class Lc283movezeros {
             }
         }
 
+       
 
         for (Object elem : nums) {
             System.out.print(elem+" ");
@@ -45,7 +37,7 @@ public class Lc283movezeros {
     }
     
     public static void main(String[] args) {
-        int nums[] = { 0, 1, 0, 3, 12 };
+        int nums[] = { 1};
 
 moveZeroes(nums);
 
