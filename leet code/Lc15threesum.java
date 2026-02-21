@@ -12,7 +12,7 @@ public class Lc15threesum {
 
         Arrays.sort(nums);
         
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n-2; i++) {
             int low = i + 1, high = n - 1;
             
             if (i>0 && nums[i] == nums[i - 1]) {

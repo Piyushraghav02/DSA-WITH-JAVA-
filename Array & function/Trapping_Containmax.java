@@ -55,12 +55,37 @@ public class Trapping_Containmax{
         return maxwater;
     }
 
+
+    public static int maxArea(int[] height) {
+        int n = height.length;
+
+        int low = 0, high = n - 1;
+
+        int maxwater=Integer.MIN_VALUE;
+        while (low <=high)
+        {
+            int minheight = Math.min(height[low], height[high]);
+
+            int currwater = (high-low) * minheight;
+
+            maxwater = Math.max(currwater, maxwater);
+
+            if (height[low] < height[high]) {
+                low++;
+            } else {
+                high--;
+            }
+        }
+        return maxwater;
+    
+    }
+
     public static void main(String args[]) {
 
         //int height[] = { 2, 3, 4, 6, 2, 5, 18 };
 
         int height[] = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
 
-        System.out.println(Containmax(height));
+        System.out.println("Maximum water is :- "+maxArea(height));
     }
 }
