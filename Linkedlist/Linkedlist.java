@@ -134,7 +134,7 @@ public class Linkedlist {
 
     public void ReverseLL() {
         Node prev = null;
-        Node curr = End = Start;
+        Node curr =  Start;
         Node next;
 
         while (curr != null) {
