@@ -1,3 +1,5 @@
+
+
 public class practice {
 
     public static class Node {
@@ -39,6 +41,7 @@ public class practice {
         
         Node fast = head;
         Node slow = head;
+        
         
 
         for (int i = 1; i <=n; i++) {
