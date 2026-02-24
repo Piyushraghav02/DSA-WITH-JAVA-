@@ -14,7 +14,7 @@ public class Lc142LLcycle_II {
         ListNode temp = head;
         
         while (temp != null) {
-            System.out.print(temp.val);
+            System.out.print(temp.val+""+"->");
             temp = temp.next;
         
         }
@@ -54,6 +54,22 @@ public class Lc142LLcycle_II {
 
     }
     
+    public static ListNode ReverseLL(ListNode head) {
+
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode next;
+        
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+    
     public static void main(String[] args) {
         ListNode a = new ListNode(100);
         ListNode b = new ListNode(200);
@@ -65,12 +81,15 @@ public class Lc142LLcycle_II {
         b.next = c;
         c.next = d;
         d.next = e;
-        e.next = c;
+        
 
         //Diplay(a);
 
-        ListNode tem = detectCycle(a);
+        //ListNode tem = detectCycle(a);
 
+
+        Diplay(a);
+        ListNode tem = ReverseLL(a);
         Diplay(tem);
 
 
