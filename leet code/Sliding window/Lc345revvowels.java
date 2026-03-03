@@ -5,7 +5,7 @@ public class Lc345revvowels {
 
         ch = Character.toLowerCase(ch);
 
-        return ch == 'a' || ch == 'a' || ch == 'i' || ch == 'o' || ch == 'u';
+        return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
     }
    
    public static String reverseVowels(String s) {
