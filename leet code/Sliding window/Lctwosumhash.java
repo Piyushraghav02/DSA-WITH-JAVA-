@@ -15,13 +15,13 @@ public class Lctwosumhash {
         for (int i = 0; i < n; i++) {
             int comp = target - nums[i];
 
-            h.put(comp, i);
-
+            
             if (h.containsKey(comp)) {
-                arr[0] = i;
-                arr[1] = h.get(comp);
+                arr[0] = h.get(comp);
+                arr[1] = i;
                 break;
             }
+            h.put(nums[i], i);
             
         }
         return arr;
