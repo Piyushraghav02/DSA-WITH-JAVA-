@@ -1,25 +1,54 @@
+
+
 public class Lc_1004_maxconseIII {
     
     public static int longestOnes(int[] nums, int k) {
         
         int n = nums.length;
 
-        int maxlen = 0;
+        // int maxlen = 0;
 
-        for (int i = 0; i < n; i++) {
-            int zero = 0;
-            for (int j = i; j < n; j++) {
+        // for (int i = 0; i < n; i++) {
+        //     int zero = 0;
+        //     for (int j = i; j < n; j++) {
+                                                    //Brute force
+        //         if (nums[j] == 0)
+        //             zero++;
 
-                if (nums[j] == 0)
-                    zero++;
+        //         if (zero <= k) {
+        //             int currlen = j - i + 1;
+        //             maxlen = Math.max(currlen, maxlen);
+        //         }
+        //     }
+        // }
+        // return maxlen;
 
-                if (zero <= k) {
-                    int currlen = j - i + 1;
-                    maxlen = Math.max(currlen, maxlen);
+          int maxlen = 0;
+
+        int low = 0, zeros = 0;
+        
+        
+        for (int high = low; high < n; high++) {
+
+                if(nums[high]==0)
+                    zeros++;
+
+                if (zeros <= k) {
+                    int curren = high - low + 1;
+                    maxlen = Math.max(curren, maxlen);
                 }
-            }
+
+                while (zeros >k) {
+                    if (nums[low] != 0) {
+                        low++;
+                    }
+                    else {
+                        zeros--;
+                    }
+                }
         }
         return maxlen;
+
     }
     
     
