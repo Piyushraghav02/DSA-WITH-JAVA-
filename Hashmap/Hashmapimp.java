@@ -1,20 +1,21 @@
 
-
+import java.util.LinkedList;
+import java.util.Scanner;
 import java.util.LinkedList;
 
-public class Hashmapimp {
+class hashmapimp{
     
-    static class hashmap<K, V> {
-        
-        public static final int Default_Capacity = 4;
-        
-        public static final float Default_LoadFactor = 0.75f;
-        
-        private class Node {
-            K key;
-            V value;
+    static class Mynewhashmap<k,v>{
 
-            Node(K key, V value) {
+        public static int Default_Capacity =0;
+        
+        public static final float  Default_load_factor = 0.75f;     //literal
+        
+        class Node {
+            k key;
+            v value;
+
+            Node(k key, v value) {
                 this.key = key;
                 this.value = value;
             }
@@ -22,127 +23,141 @@ public class Hashmapimp {
 
 
         private int n;
+        private LinkedList<Node> buckets[];
 
-        private LinkedList<Node>[] Buckets;
-    
+        
+        private void initbuckets(int n) {
+            buckets = new LinkedList[n];
 
-        private void initbuckets(int N) {
-            Buckets = new LinkedList[N];
-
-            for (int i = 0; i < Buckets.length; i++) {
-                Buckets[i] = new LinkedList<>();
+            for (int i = 0; i < buckets.length; i++) {
+                buckets[i] = new LinkedList<>();
             }
         }
 
-        public hashmap() {
-            initbuckets(Default_Capacity);
+        public Mynewhashmap(int n) {
+            Default_Capacity = n;
+            initbuckets(n);
         }
 
-        private int Hashfunction(K key) {
-            
-            int hashind = key.hashCode();
-            
-            return Math.abs(hashind) % Buckets.length;
+        public int Findhashind(k key) {
+            int currbucket = key.hashCode();
+            return Math.abs(currbucket) % buckets.length;
         }
 
         public int size() {
             return n;
         }
-        
-        public void put(K key, V value) {
 
-            int Hashindex = Hashfunction(key);
-
-            LinkedList<Node> currbucket =  Buckets[Hashindex];
+        private int SearchinBuckets(LinkedList<Node> LL,k key) {
             
-            int ei = SearchinBucket(currbucket, key);
-
-            if (ei == -1) {
-                Node node = new Node(key, value);
-                currbucket.add(node);
-                n++;
-            }
-            else {//for the update
-               
-                    Node temp = currbucket.get(ei);
-                    temp.value = value;
-                
-            }
-
-        }
-        
-        //traverse the linkedlist and looks for a node with the key if it is found so give index otherwise return null
-        private int SearchinBucket(LinkedList<Node> ll ,K key) {
-            
-            for (int i = 0; i < ll.size(); i++) {
-                if (ll.get(i).key == key) {
+            for (int i = 0; i < LL.size(); i++) {
+                if (LL.get(i).key == key) {
                     return i;
                 }
             }
             return -1;
         }
 
-        public V Get(K key) {
+        public void put(k key,v value) {
+            int alloverbucketind = Findhashind(key);    //it finds the alloverbuckets index
 
-            int buccketind = Hashfunction(key);
-            
-            LinkedList<Node> currbucket = Buckets[buccketind];
+            LinkedList<Node> currbucket = buckets[alloverbucketind]; //jo node allover buckets index par h usko lakar curr bucket daal diya phela LL;
 
-            int Foundind = SearchinBucket(currbucket, key);
-            
-            if (currbucket.get(Foundind).key == key) {
-                return currbucket.get(Foundind).value;
+            int findind = SearchinBuckets(currbucket,key);      //curr bucket or key lekar traverse ki key present hai ya nhi 
+
+            if (findind != -1) {        //agar findind not equal to -1 to node present hai 
+                currbucket.get(findind).value = value;
             }
-                //key not found
-                return null;
+            else {              //-1 hai to naya node banao or usko add krdo Lnkedlist mein
+                Node newnode = new Node(key, value);
+                currbucket.add(newnode);
+                n++;
+            }
+
+            float threeshold=Default_Capacity*Default_load_factor;
+
+            if (n >= threeshold) {
+                rehash();
+            }
+
+        }
+
+        private void rehash() {
+
+            LinkedList<Node>[] oldbuckets = buckets;
+
+            initbuckets(oldbuckets.length * 2);
+
+            n = 0;
+            for (var bucket : oldbuckets) {
+                for (var node : bucket) {
+                    put(node.key, node.value);
+                }
+            }
+        }
+
+        public int capacity() {
+            return buckets.length;
+        }
+
+        public float Findloadfactor() {
+            
+            return (n * 1.0f) % buckets.length;
         }
         
-        public V Remove(K key) {
-            int buccketind = Hashfunction(key);
-            
-            LinkedList<Node> currbucket = Buckets[buccketind];
+        public v get(k key) {
 
-            int Foundind = SearchinBucket(currbucket, key);
+            int alloverbucketind = Findhashind(key);
 
-            if (Foundind != -1) {
-                V value = currbucket.get(Foundind).value;
-                currbucket.remove(Foundind);
-                n--;
-                return value;
+            LinkedList<Node> currNode = buckets[alloverbucketind];
+
+            int findind = SearchinBuckets(currNode, key);
+
+            if (findind != -1) {
+                return (v) currNode.get(findind).value; //return the value of the this key
             }
-            System.out.println("Not Found");
             return null;
-            
         }
+        
+        public v Remove(k key) {
+            int alloverbucketind = Findhashind(key);
 
+            LinkedList<Node> currNode = buckets[alloverbucketind];
 
-        private void Rehash(int N) {  //N (Capital) is capacity / Size of bucket array
-            
-            Buckets = new LinkedList[N];
+            int findind = SearchinBuckets(currNode, key);
 
-            for (int i = 0; i < Buckets.length; i++) {
-                Buckets[i] = new LinkedList<>();
-
+            if (findind != -1) {
+                n--;
+                return currNode.remove(findind).value;
             }
+            return null;
         }
+
+
     }
     
     
     
     public static void main(String[] args) {
-        hashmap<String, Integer> h1 = new hashmap<>();
+    Scanner sc=new Scanner (System.in) ;
 
-        h1.put("A", 1);
-        h1.put("B", 2);
-        h1.put("C", 3);
-        
-        System.out.println("Testing size :- "+h1.size());
+    System.out.println("Hello everyone now your in hashmap creation ");
+    System.out.print("Give me a intial size of new hashmap :- ");
+    int n=sc.nextInt();
+
+    Mynewhashmap Mhm = new Mynewhashmap<>(n);
+
+    Mhm.put("A", 1);
+    Mhm.put("B", 2);
+    Mhm.put("C", 3);
     
+    System.out.println("After inserting element :- " + Mhm.size());
+    
+    Mhm.put("D", 4);
+    
+    System.out.println("After :- "+Mhm.capacity());
 
-        System.out.println("Deleted value :- "+h1.Remove("C"));
-        System.out.println("Deleted value :- " + h1.Remove("A"));
-        
-        System.out.println("Current size :- "+h1.size());
-        
+    System.out.println("Remove key value :- "+Mhm.Findloadfactor());
+    
     }
 }
