@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "missingno",
+      "request": "launch",
+      "mainClass": "missingno",
+      "projectName": "DSA-WITH-JAVA-_b1090c79"
+    },
+    {
+      "type": "java",
       "name": "LC167TwosumII",
       "request": "launch",
       "mainClass": "LC167TwosumII",

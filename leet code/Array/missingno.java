@@ -23,7 +23,7 @@ public class missingno {
                 j++;
             }
         }
-        return k;
+        return k;   
     }
 
     public static void main(String args[]) {
