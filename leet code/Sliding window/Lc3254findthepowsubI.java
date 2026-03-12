@@ -30,9 +30,10 @@ public class Lc3254findthepowsubI {
         // }
 
 //        return res;
-  
 
-    int n=nums.length;
+
+
+        int n=nums.length;
     int arr[]=new int[n-k+1];
     Set<Integer> hs=new HashSet<>();
     
@@ -40,9 +41,8 @@ public class Lc3254findthepowsubI {
 
     for(int high=0 ; high<=n-k ; high++){
         
-
-        while(nums[high]+1!=nums[high+1]){
-                    if(hs.size()<k){
+        while (nums[high] + 1 != nums[high + 1]) {
+            if (hs.size() < k) {
                         hs.remove(nums[low]);
                         arr[low]=nums[low+k-1];
                         low++;

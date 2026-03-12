@@ -7,7 +7,7 @@ public class Lc219containdupII {
         int n = nums.length;
 
         Set<Integer> hs = new HashSet<>();
-        
+
         int low = 0;
         boolean flag = false;
 
