@@ -20,12 +20,12 @@ public class Lc443 {
             chars[i++] = current;//store firstly character
 
             if (count > 1) {
-                if (count > 1) {
+                
                     String num = String.valueOf(count);
                     for (char c : num.toCharArray()) {
                         chars[i++] = c;
                     }
-                }
+                
             }
 
         }
