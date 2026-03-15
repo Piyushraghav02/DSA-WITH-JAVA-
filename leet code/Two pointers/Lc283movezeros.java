@@ -4,7 +4,7 @@ public class Lc283movezeros {
 
         int n = nums.length ;
 
-        int i = -1;
+        int i = 0;
 
         
 
@@ -19,7 +19,7 @@ public class Lc283movezeros {
                 break;
             }
         }
-        for (int j = i+1; j < n; j++) {
+        for (int j = i; j < n; j++) {
             
             if (nums[j] != 0) {
                 int temp = nums[j];
@@ -29,17 +29,17 @@ public class Lc283movezeros {
             }
         }
 
-       
-
         for (Object elem : nums) {
             System.out.print(elem+" ");
         }
     }
     
     public static void main(String[] args) {
+       
         int nums[] = { 1};
 
-moveZeroes(nums);
+        moveZeroes(nums);
+
 
     }
 }
