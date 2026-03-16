@@ -1,4 +1,4 @@
-public class mostwater {
+public class Lc11_containmostwater {
 
     public static int mostwater(int height[]) {
         int n = height.length;
@@ -8,8 +8,7 @@ public class mostwater {
             for (int right = left + 1; right < n; right++) {
 
                 int width = right - left;
-                int minbar = Math.min(height[left], height[right]); // it will count left and right bars which is small
-                                                                    // bar
+                int minbar = Math.min(height[left], height[right]); // it will count left and right bars which is small bar
 
                 int waterstore = width * minbar; // kitna pani ekhata ho rha hai bars ke beech mai
 
@@ -21,6 +20,7 @@ public class mostwater {
     }
 
     public static int optimisedmostwater(int height[]) {
+        
         int right = height.length - 1;
         int left = 0;
         int maxwater = 0;
@@ -40,7 +40,6 @@ public class mostwater {
             }
 
         }
-
         return maxwater;
     }
 

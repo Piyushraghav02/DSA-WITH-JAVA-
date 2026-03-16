@@ -1,6 +1,6 @@
 
 
-public class PartitionSort {
+public class Lc2161PartitionSort {
     
     public static void printarr(int nums[]) {
         
