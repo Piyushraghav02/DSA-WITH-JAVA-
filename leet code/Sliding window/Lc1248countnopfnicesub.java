@@ -29,11 +29,31 @@ public class Lc1248countnopfnicesub {
         return calnumberOfSubarrays(nums, k) - calnumberOfSubarrays(nums, k - 1);
     }
     
+
+    public static int calnumberOfSubarrayshash(int[] nums, int k) {
+        int n = nums.length;
+
+        int count = 0, prefix = 0;
+        Map<Integer, Integer> hm = new HashMap<>();
+
+        hm.put(0, 1);
+
+        for (int i = 0; i < n; i++) {
+            prefix += nums[i] % 2;
+
+            if (hm.containsKey(prefix - k)) {
+                count += hm.get(prefix - k);
+            }
+            hm.put(prefix, hm.getOrDefault(prefix, 0) + 1);
+        }
+
+        return count;
+    }
     public static void main(String[] args) {
     
         int nums[] = { 1, 1, 2, 1, 1 };
         
-        System.out.println(numberOfSubarrays(nums, 3));    
+        System.out.println(calnumberOfSubarrayshash(nums, 3));    
 
 
     }
