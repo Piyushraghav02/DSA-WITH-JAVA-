@@ -12,19 +12,19 @@ public class Implementation {
         }
     }
     
-    public static void Display(Node root) {
+    public static void Display(Node a) {
         
-        if (root == null)
+        if (a == null)
             return;
 
-        System.out.print(root.val + "->");
-       if(root.left!=null) System.out.print(root.left.val + ",");
-       if (root.right != null)
-           System.out.print(root.right.val);
+        System.out.print(a.val + "->");
+       if(a.left!=null) System.out.print(a.left.val + ",");
+       if (a.right != null)
+           System.out.print(a.right.val);
 
        System.out.println();
-        Display(root.left);
-        Display(root.right);
+        Display(a.left);
+        Display(a.right);
         
 
     } 

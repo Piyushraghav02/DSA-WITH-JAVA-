@@ -12,15 +12,23 @@ public class sizemaxheight {
         }
     }
 
-    public static void preorder(Node root) {
-        if (root == null)
+    public static void Display(Node a) {
+        
+        if (a == null)
             return;
 
-        System.out.print(root.val + " ");
-        preorder(root.left);
-        preorder(root.right);
-    }
-    
+        System.out.print(a.val + "->");
+       if(a.left!=null) System.out.print(a.left.val + ",");
+       if (a.right != null)
+           System.out.print(a.right.val);
+
+       System.out.println();
+        Display(a.left);
+        Display(a.right);
+        
+
+    } 
+  
     public static int size(Node root) {
         if (root == null)
             return 0;
@@ -38,7 +46,7 @@ public class sizemaxheight {
 
     public static int Findmax(Node root) {
         if (root == null)
-            return 0;
+            return Integer.MIN_VALUE;
 
         int a = root.val;
         int b = Findmax(root.left);
@@ -48,8 +56,40 @@ public class sizemaxheight {
 
     }
     
-    public static void main(String[] args) {
+    public static int findheight(Node root) {
+        if (root == null || root.left == null && root.right == null)
+            return 0;
+
+        return 1 + Math.max(findheight(root.left), findheight(root.right));
+
+    }
+    
+    public static int findmin(Node root) {
+
+        if (root == null)
+            return Integer.MAX_VALUE;
+
+        int a = root.val;
+        int b = findmin(root.left);
+        int c = findmin(root.right);
+
+        return Math.min(a, Math.min(b, c));
+
+    }
+
+    public static int findprod(Node root) {
         
+        if (root == null )
+            return 1;
+
+        if( root.left == null && root.right == null)
+            return root.val;
+        
+        return root.val * findprod(root.left) * findprod(root.right);
+
+    }
+    public static void main(String[] args) {
+
         Node a = new Node(1);
         Node b = new Node(2);
         Node c = new Node(3);
@@ -59,19 +99,28 @@ public class sizemaxheight {
 
         Node d = new Node(4);
         Node e = new Node(5);
-        
+
         b.left = d;
         b.right = e;
 
         Node f = new Node(6);
-        
+
         c.right = f;
 
+        Node g = new Node(7);
+        e.right = g;
+
         System.out.println("Size of tree is :- " + size(a));
-     
+
         System.out.println(" Sum of tree is :- " + Findsum(a));
 
-        System.out.println(" Max of this tree :- "+Findmax(a));
-    
+        System.out.println(" Max of this tree :- " + Findmax(a));
+
+        System.out.println(" Height of this tree :- " + findheight(a));
+
+        System.out.println("Minimum value of tree :- " + findmin(a));
+
+        System.out.println("Product of tree :- " + findprod(a));
+
     }
 }

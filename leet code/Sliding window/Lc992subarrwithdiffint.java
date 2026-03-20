@@ -16,6 +16,7 @@ public class Lc992subarrwithdiffint {
             
             while (hm.size() > k) {
                 hm.put(nums[low], hm.get(nums[low]) - 1);
+                
                 if (hm.get(nums[low]) == 0) {
                     hm.remove(nums[low]);
                 }
