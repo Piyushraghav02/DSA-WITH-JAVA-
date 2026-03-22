@@ -1,4 +1,5 @@
-
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class sizemaxheight {
     
@@ -78,16 +79,50 @@ public class sizemaxheight {
     }
 
     public static int findprod(Node root) {
-        
-        if (root == null )
+
+        if (root == null)
             return 1;
 
-        if( root.left == null && root.right == null)
+        if (root.left == null && root.right == null)
             return root.val;
-        
+
         return root.val * findprod(root.left) * findprod(root.right);
 
     }
+    
+    public static void displaynthlvl(Node root, int nthlvl) {
+        if (root == null)
+            return;
+
+        if (nthlvl == 1) {
+            System.out.print(root.val + " ");
+        }
+        displaynthlvl(root.left, nthlvl - 1);
+        displaynthlvl(root.right, nthlvl - 1);
+    }
+    
+    public static void BFStraversal(Node root) {
+        
+        Queue<Node> q = new LinkedList<>();
+
+        if(root!=null)
+        q.add(root);
+
+        while (q.size() > 0) {
+            Node temp = q.peek();
+
+            if (temp.left != null)
+                q.add(temp.left);
+            if(temp.right!=null)
+                q.add(temp.right);
+            
+            System.out.print(temp.val + " ");
+            q.remove();
+       
+        }
+
+    }
+
     public static void main(String[] args) {
 
         Node a = new Node(1);
@@ -105,22 +140,29 @@ public class sizemaxheight {
 
         Node f = new Node(6);
 
-        c.right = f;
+        c.left = f;
 
         Node g = new Node(7);
-        e.right = g;
+        c.right = g;
 
-        System.out.println("Size of tree is :- " + size(a));
+        // System.out.println("Size of tree is :- " + size(a));
 
-        System.out.println(" Sum of tree is :- " + Findsum(a));
+        // System.out.println(" Sum of tree is :- " + Findsum(a));
 
-        System.out.println(" Max of this tree :- " + Findmax(a));
+        // System.out.println(" Max of this tree :- " + Findmax(a));
 
-        System.out.println(" Height of this tree :- " + findheight(a));
+        // System.out.println(" Height of this tree :- " + findheight(a));
 
-        System.out.println("Minimum value of tree :- " + findmin(a));
+        // System.out.println("Minimum value of tree :- " + findmin(a));
 
-        System.out.println("Product of tree :- " + findprod(a));
+        // System.out.println("Product of tree :- " + findprod(a));
 
+        // int level = findheight(a) + 1;
+        // for (int i = 1; i <= level; i++) {
+        //     displaynthlvl(a, i);
+        //     System.out.println();
+        // }
+
+        BFStraversal(a);
     }
 }
