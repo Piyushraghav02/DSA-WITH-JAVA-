@@ -1,34 +1,34 @@
 public class LC643maxsubarr_I {
     
     public static double findMaxAverage(int[] nums, int k) {
-        // int n = nums.length;
-
-        // double maxavg = Integer.MIN_VALUE;
-
-        // for (int i = 0; i < n-3; i++) {
-        //     int sum = 0;
-        //     for (int j = i; (j - i + 1) <= k; j++) {     //Brute force
-
-        //         sum += nums[j];
-        //     }
-        //     double avg = (double) sum / k;
-        //     maxavg = Math.max(maxavg, avg);
-        // }
-        // return maxavg;
-
         int n = nums.length;
-        int sum = 0, maxsum = 0;
 
-        for (int i = 0; i < k; i++) {
-            sum += nums[i];
-        }
-        maxsum = sum;
+        double maxavg = Integer.MIN_VALUE;
 
-        for (int i = k; i < n; i++) {
-            sum += nums[i] - nums[i - k];
-            maxsum = Math.max(sum, maxsum);
+        for (int i = 0; i < n-k; i++) {
+            int sum = 0;
+            for (int j = i; (j - i + 1) <= k; j++) {     //Brute force
+
+                sum += nums[j];
+            }
+            double avg = (double) sum / k;
+            maxavg = Math.max(maxavg, avg);
         }
-        return (double) maxsum / k;
+        return maxavg;
+
+        // int n = nums.length;
+        // int sum = 0, maxsum = 0;
+
+        // for (int i = 0; i < k; i++) {
+        //     sum += nums[i];
+        // }
+        // maxsum = sum;
+
+        // for (int i = k; i < n; i++) {
+        //     sum += nums[i] - nums[i - k];
+        //     maxsum = Math.max(sum, maxsum);
+        // }
+        // return (double) maxsum / k;
 
     }
     
