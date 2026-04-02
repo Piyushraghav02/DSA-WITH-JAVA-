@@ -1,38 +1,45 @@
 import java.util.Arrays;
 
 public class Lc875 {
-    
-    public static long findhrs(int piles[], int rate) {
-        long totalhours = 0;
 
-        for (int i = 0; i < piles.length; i++) {
-            totalhours += (piles[i] + rate - 1) / rate;
+    public static int findhours(int piles[], int cap) {
+        int n = piles.length;
+
+        int totalhrs = 0;
+
+        for (int i = 0; i < n; i++) {
+            totalhrs += (piles[i] + cap - 1) / cap;
         }
-        return totalhours;
-    }
-    
+        return totalhrs;
+ }
+ 
+ 
     public static int minEatingSpeed(int[] piles, int h) {
         
         int low = 1, high = Arrays.stream(piles).max().getAsInt();
-        
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
+        int minhours = 0;
 
-            long totalhours = findhrs(piles, mid);
-            
-            if (totalhours <= h) {
+        while (low <= high) {
+
+            int mid = (low + high) / 2;
+
+            int totalhrs = findhours(piles, mid);
+
+
+            if (totalhrs <= h) {
+               minhours=mid;
                 high = mid - 1;
             } else {
                 low = mid + 1;
             }
         }
-        return low;
+        return minhours;
+ 
     }
-    
     public static void main(String[] args) {
         
-        int piles[] = { 3, 6, 7, 11 };
+        int piles[] = { 30,11,23,4,20 };
         
-        System.out.println("This is the minimum time of eat all bananas :- "+minEatingSpeed(piles, 8));
+        System.out.println("This is the minimum time of eat all bananas :- "+minEatingSpeed(piles, 6));
     }
 }
