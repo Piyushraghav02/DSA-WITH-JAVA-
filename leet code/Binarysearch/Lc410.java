@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Lc410 {
     
     public static int countsubarr(int arr[], int area) {
@@ -18,7 +20,22 @@ public class Lc410 {
 
     }
     public int splitArray(int[] nums, int k) {
-        
+        int n = nums.length;
+        int ans = Integer.MIN_VALUE;
+        int low = Arrays.stream(nums).max().getAsInt();
+        int high = Arrays.stream(nums).sum();
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (countsubarr(nums, mid) <= k) {
+                ans = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return ans;
     }
     
     
