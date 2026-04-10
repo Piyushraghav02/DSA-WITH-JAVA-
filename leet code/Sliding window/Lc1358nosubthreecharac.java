@@ -28,10 +28,34 @@ public class Lc1358nosubthreecharac {
         return count;
         
     }
-    
-    public static void main(String[] args) {
+
+    public static int numberOfSubstringsoptimal(String s) {
+
+        int[] count = new int[3]; // a, b, c
+        int left = 0;
+        int n = s.length();
+        int ans = 0;
+
+        for (int right = 0; right < n; right++) {
+
+            count[s.charAt(right) - 'a']++;
+
+            // when window is valid
+            while (count[0] > 0 && count[1] > 0 && count[2] > 0) {
+
+                ans += (n - right);
+
+                count[s.charAt(left) - 'a']--;
+                left++;
+            }
+        }
+
+        return ans;
+    }
+
+        public static void main(String[] args) {
         String s = "aaabc";
 
-        System.out.print(numberOfSubstrings(s));
+        System.out.print(numberOfSubstringsoptimal(s));
     }
 }
