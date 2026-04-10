@@ -3,15 +3,23 @@ import java.util.List;
 
 public class printsubseq {
 
-    public static void printingsubseq(int arr[],int i,List<Integer> l) {
+    public static void printingsubseq(int arr[],int i,List<Integer> l,int sum,int k) {
         if (i == arr.length) {
-            System.out.println(l);
+            if (sum == k) {
+                System.out.println(l);
+            }
             return;
         }
-        printingsubseq(arr, i + 1, l);
+        //take
         l.add(arr[i]);
-        printingsubseq(arr, i + 1, l);
+        sum += arr[i];
+        printingsubseq(arr, i + 1, l, sum, k);
+       
+        sum -= arr[i];
         l.remove(l.size() - 1);
+    
+        //not take
+        printingsubseq(arr, i + 1, l,sum,k);
     }
 
     public static void main(String[] args) {
@@ -19,7 +27,7 @@ public class printsubseq {
 
         int arr[] = { 3, 1, 2 };
 
-        printingsubseq(arr,0,l);
+        printingsubseq(arr,0,l,0,4);
 
 
         
