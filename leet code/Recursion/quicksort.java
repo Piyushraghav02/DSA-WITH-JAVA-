@@ -14,9 +14,7 @@ public class quicksort {
             quicksort(arr, partionind + 1, high);
 
         }
-
     }
-
     private static int calquicksort(int[] arr, int low, int high) {
         int pivot = arr[low];
         int i = low;

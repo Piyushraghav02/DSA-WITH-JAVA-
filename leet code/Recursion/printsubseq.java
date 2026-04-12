@@ -10,6 +10,7 @@ public class printsubseq {
             }
             return;
         }
+        
         //take
         l.add(arr[i]);
         sum += arr[i];
@@ -72,8 +73,10 @@ public class printsubseq {
     public static void main(String[] args) {
       
         int arr[] = { 1, 2, 1 };
+        List<Integer> l = new ArrayList<>();
 
-      System.out.print(countprintingsubseq(arr,0, 0,2));
+        printingsubseq(arr, 0, l, 0, 2);
+      System.out.println();
 
 
         
