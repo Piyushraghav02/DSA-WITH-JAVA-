@@ -4,12 +4,12 @@ import java.util.List;
 public class Lc216 {
     
     public static void calcombsum3(int[] arr, int i, List<Integer> curr, List<List<Integer>> ans, int k,int n) {
-        if (n < 0||i==arr.length)
-            return;
-        if (n == 0 && curr.size()==k) {
+        if (n == 0 && curr.size() == k) {
             ans.add(new ArrayList<>(curr));
             return;
         }
+        
+        if (n < 0 || i == arr.length || curr.size() > k) return;
 
         //inlcuisve 
         curr.add(arr[i]);
