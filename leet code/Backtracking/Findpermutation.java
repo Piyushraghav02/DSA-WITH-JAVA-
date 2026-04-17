@@ -70,8 +70,6 @@ public class Findpermutation {
         return ans;
     }
 
-
-
     public static void main(String[] args) {
         String str1 = "abc";
         //findpermutation(str1, "");
