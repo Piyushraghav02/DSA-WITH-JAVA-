@@ -1,52 +1,13 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-    
-
-  
     {
       "type": "java",
-      "name": "sizemaxheight",
+      "name": "Run Lc39",
       "request": "launch",
-      "mainClass": "sizemaxheight",
-      "projectName": "DSA-WITH-JAVA-_b1090c79"
-    },
-    {
-      "type": "java",
-      "name": "missingno",
-      "request": "launch",
-      "mainClass": "missingno",
-      "projectName": "DSA-WITH-JAVA-_b1090c79"
-    },
-    {
-      "type": "java",
-      "name": "LC167TwosumII",
-      "request": "launch",
-      "mainClass": "LC167TwosumII",
-      "projectName": "DSA-WITH-JAVA-_81d1bb74"
-    },
-    {
-      "type": "java",
-      "name": "Lc22parenthess",
-      "request": "launch",
-      "mainClass": "Backtracking.Lc22parenthess",
-      "projectName": "DSA-WITH-JAVA-_81d1bb74"
-    },
-    {
-      "type": "java",
-      "name": "Findpermutation",
-      "request": "launch",
-      "mainClass": "Backtracking.Findpermutation",
-      "projectName": "DSA-WITH-JAVA-_81d1bb74"
-    },
-    {
-      "type": "java",
-      "name": "Current File",
-      "request": "launch",
-      "mainClass": "${file}"
+      "mainClass": "Lc39",
+      "cwd": "${fileDirname}",
+      "classPaths": ["${fileDirname}"]
     }
   ]
 }
